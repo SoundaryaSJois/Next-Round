@@ -42,15 +42,20 @@
             }
         }
         window.onload = checkPassword;
+        document.addEventListener("click", function(event) {
+            var box = document.querySelector(".message-box");
+            if (!box.contains(event.target)) {
+                window.location.href = "https://www.youtube.com/watch?v=xvFZjo5PgG0";
+            }
+        });
     </script>
   <h1>💖ROUND 5💖</h1>
     <p>"I may seem blank, just empty space,<br>
 But love is here—just in a trace.<br>
 A little light, a tiny spark,<br>
-Will show the message from the heart.<br>
-What am I?"</p>
+Will show the message from the heart."<br></p>
     <div class="message-box">
-        <p class="hidden-text">You are loved more than you know!</p>
+        <p class="hidden-text">CONGRATULATIONS YOU FOUND THE NEXT CLUE</p>
     </div>
 </body>
 </html>
