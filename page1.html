@@ -10,6 +10,7 @@
             font-family: 'Arial', sans-serif;
             text-align: center;
             padding: 50px;
+            display: none;
         }
         h1 {
             color: #ff4d6d;
@@ -30,15 +31,26 @@
             padding: 10px;
         }
     </style>
-</head>
-<body>
-    <h1>💖ROUND 5💖</h1>
-    <p> It may seem blank, just empty space,<br>
+    <script>
+        function checkPassword() {
+            var password = prompt("Enter the password to access the website:");
+            if (password === "love") {
+                document.body.style.display = "block";
+            } else {
+                alert("Wrong password! Access denied.");
+                window.location.href = "about:blank";
+            }
+        }
+        window.onload = checkPassword;
+    </script>
+  <h1>💖ROUND 5💖</h1>
+    <p>"I may seem blank, just empty space,<br>
 But love is here—just in a trace.<br>
 A little light, a tiny spark,<br>
-Will show the message from the heart.</p>
+Will show the message from the heart.<br>
+What am I?"</p>
     <div class="message-box">
-        <p class="hidden-text"> HERE IS THE CLUE!!</p>
+        <p class="hidden-text">You are loved more than you know! 💕</p>
     </div>
 </body>
 </html>
