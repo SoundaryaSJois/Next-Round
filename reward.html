@@ -18,6 +18,7 @@
             background-attachment: fixed;
             position: relative;
         }
+        
 
         /* Floating Hearts */
         .heart {
@@ -96,6 +97,32 @@
     </style>
 </head>
 <body>
+    <body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day 💖</title>
+</head>
+<body>
+
+    <!-- Background Music (Initially muted) -->
+    <audio id="bg-music" loop muted>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function playMusic() {
+    const music = document.getElementById("bg-music");
+    music.muted = false; // Unmute before playing
+    music.play().catch(error => console.log("Playback failed:", error));
+
+    document.removeEventListener("click", playMusic);
+    document.removeEventListener("scroll", playMusic);
+    document.removeEventListener("keypress", playMusic);
+	}
+	</script>
 
     <!-- Floating Hearts -->
     <script>
