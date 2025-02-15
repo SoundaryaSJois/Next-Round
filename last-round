@@ -6,11 +6,16 @@
   <title>Final Round: The Last Piece Awaits</title>
   <style>
     body {
-      background-color: #fff0f5;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       font-family: Arial, sans-serif;
       text-align: center;
       color: #333;
       padding: 20px;
+      animation: fadeIn 1.5s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     .clue {
       font-style: italic;
@@ -35,6 +40,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      transform: scale(1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .image-container:hover {
+      transform: scale(1.1);
     }
     .image-container img {
       width: 200px;
@@ -42,6 +52,7 @@
       object-fit: cover;
       border: 2px solid #ff69b4;
       border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .image-number {
       background-color: rgba(255, 105, 180, 0.8);
@@ -51,6 +62,11 @@
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 5px;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     .crossword {
       display: flex;
@@ -69,6 +85,11 @@
       margin: 2px;
       border: 2px solid #ccc;
       border-bottom: 2px solid #333;
+      transition: all 0.3s;
+    }
+    .letter:focus {
+      border-color: #ff1493;
+      transform: scale(1.1);
     }
     .vowel {
       background-color: #ffe4e1;
@@ -77,16 +98,18 @@
       text-transform: uppercase;
     }
     .submit-btn {
-      padding: 8px 16px;
+      padding: 10px 20px;
       font-size: 1.1em;
       background-color: #ff69b4;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s;
     }
     .submit-btn:hover {
       background-color: #ff1493;
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -122,7 +145,6 @@
       <img src="https://cdn2.picryl.com/photo/1890/12/31/the-counting-house-by-i-turgenev-illustration-by-p-sokolov-4a74c1-1024.jpg" alt="Painting 3">
     </div>
   </div>
-  
   <div class="crossword">
     <div class="word" id="word1">
       <p class="highlight">1</p>
@@ -181,7 +203,6 @@
         alert("That's not quite right. Try again!");
       }
     }
-  </script>
+    </script>
 </body>
 </html>
-
