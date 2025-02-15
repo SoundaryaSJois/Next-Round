@@ -16,7 +16,11 @@
       font-style: italic;
       font-size: 1.2em;
       margin-bottom: 30px;
-      white-space: pre-line; /* preserves newlines */
+      white-space: pre-line;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #d63384;
     }
     .image-row {
       display: flex;
@@ -25,7 +29,7 @@
       margin-bottom: 30px;
     }
     .image-row img {
-      width: 240px;
+      width: 200px;
       border: 2px solid #ff69b4;
       border-radius: 10px;
     }
@@ -36,18 +40,17 @@
       margin-bottom: 20px;
     }
     .word {
-      margin: 5px 0;
+      margin: 3px 0;
     }
     .letter {
-      width: 40px;
-      height: 40px;
-      font-size: 1.5em;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2em;
       text-align: center;
       margin: 2px;
       border: 2px solid #ccc;
       border-bottom: 2px solid #333;
     }
-    /* Highlight vowels with a light pink background */
     .vowel {
       background-color: #ffe4e1;
     }
@@ -55,8 +58,8 @@
       text-transform: uppercase;
     }
     .submit-btn {
-      padding: 10px 20px;
-      font-size: 1.2em;
+      padding: 8px 16px;
+      font-size: 1.1em;
       background-color: #ff69b4;
       color: white;
       border: none;
@@ -69,21 +72,20 @@
   </style>
 </head>
 <body>
-  <h1>Final Round: The Last Piece Awaits</h1>
+  <h1>✨Final Round: The Last Piece Awaits✨</h1>
   
   <p class="clue">
-    ✨ Final Round: The Last Piece Awaits ✨
 
     Three glimpses of art, scattered in time,
-    Each holds a name, a clue in its prime.
+    Each holds a <span class="highlight">name</span>, a clue in its prime.
 
     One shows a number, not too small,
     The second, a melody—a love-filled call.
     The last, where coins and ledgers reside,
     Count the meaning—let fate be your guide.
 
-    Fill the blanks, vowels in hue,
-    A phrase to mark our love so true.
+    Fill the blanks, vowels in <span class="highlight">hue</span>,
+    A <span class="highlight">phrase</span> to mark our love so true.
     The end is near, just one thing—
     Find the titles, and let them sing.
   </p>
@@ -94,17 +96,13 @@
     <img src="https://cdn2.picryl.com/photo/1890/12/31/the-counting-house-by-i-turgenev-illustration-by-p-sokolov-4a74c1-1024.jpg" alt="Painting 3">
   </div>
   
-  <!-- Crossword Puzzle Style Answer Input -->
-  <!-- The answer phrase is: FIVE VALENTINES AND COUNTING -->
   <div class="crossword">
-    <!-- Word 1: FIVE (4 letters) -->
     <div class="word" id="word1">
       <input type="text" maxlength="1" class="letter" id="letter1-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter1-2">
       <input type="text" maxlength="1" class="letter" id="letter1-3">
       <input type="text" maxlength="1" class="letter vowel" id="letter1-4">
     </div>
-    <!-- Word 2: VALENTINES (10 letters) -->
     <div class="word" id="word2">
       <input type="text" maxlength="1" class="letter" id="letter2-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter2-2">
@@ -117,13 +115,11 @@
       <input type="text" maxlength="1" class="letter vowel" id="letter2-9">
       <input type="text" maxlength="1" class="letter" id="letter2-10">
     </div>
-    <!-- Word 3: AND (3 letters) -->
     <div class="word" id="word3">
       <input type="text" maxlength="1" class="letter vowel" id="letter3-1">
       <input type="text" maxlength="1" class="letter" id="letter3-2">
       <input type="text" maxlength="1" class="letter" id="letter3-3">
     </div>
-    <!-- Word 4: COUNTING (8 letters) -->
     <div class="word" id="word4">
       <input type="text" maxlength="1" class="letter" id="letter4-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter4-2">
@@ -140,25 +136,16 @@
   
   <script>
     function checkAnswer() {
-      // Build each word from the inputs
-      function getWord(wordId, count) {
-        let word = "";
-        for (let i = 1; i <= count; i++) {
-          word += document.getElementById(`${wordId}-${i}`).value.toUpperCase();
-        }
-        return word;
-      }
+      let correctAnswer = "FIVEVALENTINESANDCOUNTING";
+      let answer = document.querySelectorAll(".letter");
+      let userAnswer = "";
       
-      let word1 = getWord("letter1", 4); // FIVE
-      let word2 = getWord("letter2", 10); // VALENTINES
-      let word3 = getWord("letter3", 3); // AND
-      let word4 = getWord("letter4", 8); // COUNTING
+      answer.forEach(input => {
+        userAnswer += input.value.toUpperCase();
+      });
       
-      let answer = word1 + " " + word2 + " " + word3 + " " + word4;
-      let correctAnswer = "FIVE VALENTINES AND COUNTING";
-      
-      if (answer === correctAnswer) {
-        alert("Correct! You've solved the final round!");
+      if (userAnswer === correctAnswer) {
+        window.location.href = "https://soundaryasjois.github.io/Next-Round/reward.html";
       } else {
         alert("That's not quite right. Try again!");
       }
