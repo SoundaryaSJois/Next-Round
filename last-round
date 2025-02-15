@@ -27,11 +27,30 @@
       justify-content: center;
       gap: 10px;
       margin-bottom: 30px;
+      align-items: flex-start;
     }
-    .image-row img {
+    .image-container {
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .image-container img {
       width: 200px;
+      height: 200px;
+      object-fit: cover;
       border: 2px solid #ff69b4;
       border-radius: 10px;
+    }
+    .image-number {
+      background-color: rgba(255, 105, 180, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 5px;
     }
     .crossword {
       display: flex;
@@ -75,7 +94,6 @@
   <h1>✨Final Round: The Last Piece Awaits✨</h1>
   
   <p class="clue">
-
     Three glimpses of art, scattered in time,
     Each holds a <span class="highlight">name</span>, a clue in its prime.
 
@@ -91,19 +109,30 @@
   </p>
   
   <div class="image-row">
-    <img src="https://slavneobrazy.cz/obr/webp/XIR29288.webp" alt="Painting 1">
-    <img src="https://www.crossroadsartcenter.com/cdn/shop/files/Wolitz_Linda_MyFunnyValentine_Pastel_300_1_240x240_crop_center.jpg?v=1734273482" alt="Painting 2">
-    <img src="https://cdn2.picryl.com/photo/1890/12/31/the-counting-house-by-i-turgenev-illustration-by-p-sokolov-4a74c1-1024.jpg" alt="Painting 3">
+    <div class="image-container">
+      <span class="image-number">1</span>
+      <img src="https://slavneobrazy.cz/obr/webp/XIR29288.webp" alt="Painting 1">
+    </div>
+    <div class="image-container">
+      <span class="image-number">2</span>
+      <img src="https://www.crossroadsartcenter.com/cdn/shop/files/Wolitz_Linda_MyFunnyValentine_Pastel_300_1_240x240_crop_center.jpg?v=1734273482" alt="Painting 2">
+    </div>
+    <div class="image-container">
+      <span class="image-number">3</span>
+      <img src="https://cdn2.picryl.com/photo/1890/12/31/the-counting-house-by-i-turgenev-illustration-by-p-sokolov-4a74c1-1024.jpg" alt="Painting 3">
+    </div>
   </div>
   
   <div class="crossword">
     <div class="word" id="word1">
+      <p class="highlight">1</p>
       <input type="text" maxlength="1" class="letter" id="letter1-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter1-2">
       <input type="text" maxlength="1" class="letter" id="letter1-3">
       <input type="text" maxlength="1" class="letter vowel" id="letter1-4">
     </div>
     <div class="word" id="word2">
+      <p class="highlight">2</p>
       <input type="text" maxlength="1" class="letter" id="letter2-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter2-2">
       <input type="text" maxlength="1" class="letter" id="letter2-3">
@@ -116,11 +145,13 @@
       <input type="text" maxlength="1" class="letter" id="letter2-10">
     </div>
     <div class="word" id="word3">
+      <p class="highlight">Article</p>
       <input type="text" maxlength="1" class="letter vowel" id="letter3-1">
       <input type="text" maxlength="1" class="letter" id="letter3-2">
       <input type="text" maxlength="1" class="letter" id="letter3-3">
     </div>
     <div class="word" id="word4">
+      <p class="highlight">3</p>
       <input type="text" maxlength="1" class="letter" id="letter4-1">
       <input type="text" maxlength="1" class="letter vowel" id="letter4-2">
       <input type="text" maxlength="1" class="letter vowel" id="letter4-3">
@@ -153,3 +184,4 @@
   </script>
 </body>
 </html>
+
