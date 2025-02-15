@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Final Round: The Last Piece Awaits</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: #333;
+      padding: 20px;
+    }
+    .clue {
+      font-style: italic;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      white-space: pre-line; /* preserves newlines */
+    }
+    .image-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .image-row img {
+      width: 240px;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+    }
+    .crossword {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .word {
+      margin: 5px 0;
+    }
+    .letter {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5em;
+      text-align: center;
+      margin: 2px;
+      border: 2px solid #ccc;
+      border-bottom: 2px solid #333;
+    }
+    /* Highlight vowels with a light pink background */
+    .vowel {
+      background-color: #ffe4e1;
+    }
+    input[type="text"] {
+      text-transform: uppercase;
+    }
+    .submit-btn {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <h1>Final Round: The Last Piece Awaits</h1>
+  
+  <p class="clue">
+    ✨ Final Round: The Last Piece Awaits ✨
+
+    Three glimpses of art, scattered in time,
+    Each holds a name, a clue in its prime.
+
+    One shows a number, not too small,
+    The second, a melody—a love-filled call.
+    The last, where coins and ledgers reside,
+    Count the meaning—let fate be your guide.
+
+    Fill the blanks, vowels in hue,
+    A phrase to mark our love so true.
+    The end is near, just one thing—
+    Find the titles, and let them sing.
+  </p>
+  
+  <div class="image-row">
+    <img src="https://slavneobrazy.cz/obr/webp/XIR29288.webp" alt="Painting 1">
+    <img src="https://www.crossroadsartcenter.com/cdn/shop/files/Wolitz_Linda_MyFunnyValentine_Pastel_300_1_240x240_crop_center.jpg?v=1734273482" alt="Painting 2">
+    <img src="https://cdn2.picryl.com/photo/1890/12/31/the-counting-house-by-i-turgenev-illustration-by-p-sokolov-4a74c1-1024.jpg" alt="Painting 3">
+  </div>
+  
+  <!-- Crossword Puzzle Style Answer Input -->
+  <!-- The answer phrase is: FIVE VALENTINES AND COUNTING -->
+  <div class="crossword">
+    <!-- Word 1: FIVE (4 letters) -->
+    <div class="word" id="word1">
+      <input type="text" maxlength="1" class="letter" id="letter1-1">
+      <input type="text" maxlength="1" class="letter vowel" id="letter1-2">
+      <input type="text" maxlength="1" class="letter" id="letter1-3">
+      <input type="text" maxlength="1" class="letter vowel" id="letter1-4">
+    </div>
+    <!-- Word 2: VALENTINES (10 letters) -->
+    <div class="word" id="word2">
+      <input type="text" maxlength="1" class="letter" id="letter2-1">
+      <input type="text" maxlength="1" class="letter vowel" id="letter2-2">
+      <input type="text" maxlength="1" class="letter" id="letter2-3">
+      <input type="text" maxlength="1" class="letter vowel" id="letter2-4">
+      <input type="text" maxlength="1" class="letter" id="letter2-5">
+      <input type="text" maxlength="1" class="letter" id="letter2-6">
+      <input type="text" maxlength="1" class="letter vowel" id="letter2-7">
+      <input type="text" maxlength="1" class="letter" id="letter2-8">
+      <input type="text" maxlength="1" class="letter vowel" id="letter2-9">
+      <input type="text" maxlength="1" class="letter" id="letter2-10">
+    </div>
+    <!-- Word 3: AND (3 letters) -->
+    <div class="word" id="word3">
+      <input type="text" maxlength="1" class="letter vowel" id="letter3-1">
+      <input type="text" maxlength="1" class="letter" id="letter3-2">
+      <input type="text" maxlength="1" class="letter" id="letter3-3">
+    </div>
+    <!-- Word 4: COUNTING (8 letters) -->
+    <div class="word" id="word4">
+      <input type="text" maxlength="1" class="letter" id="letter4-1">
+      <input type="text" maxlength="1" class="letter vowel" id="letter4-2">
+      <input type="text" maxlength="1" class="letter vowel" id="letter4-3">
+      <input type="text" maxlength="1" class="letter" id="letter4-4">
+      <input type="text" maxlength="1" class="letter" id="letter4-5">
+      <input type="text" maxlength="1" class="letter vowel" id="letter4-6">
+      <input type="text" maxlength="1" class="letter" id="letter4-7">
+      <input type="text" maxlength="1" class="letter" id="letter4-8">
+    </div>
+  </div>
+  
+  <button class="submit-btn" onclick="checkAnswer()">Submit</button>
+  
+  <script>
+    function checkAnswer() {
+      // Build each word from the inputs
+      function getWord(wordId, count) {
+        let word = "";
+        for (let i = 1; i <= count; i++) {
+          word += document.getElementById(`${wordId}-${i}`).value.toUpperCase();
+        }
+        return word;
+      }
+      
+      let word1 = getWord("letter1", 4); // FIVE
+      let word2 = getWord("letter2", 10); // VALENTINES
+      let word3 = getWord("letter3", 3); // AND
+      let word4 = getWord("letter4", 8); // COUNTING
+      
+      let answer = word1 + " " + word2 + " " + word3 + " " + word4;
+      let correctAnswer = "FIVE VALENTINES AND COUNTING";
+      
+      if (answer === correctAnswer) {
+        alert("Correct! You've solved the final round!");
+      } else {
+        alert("That's not quite right. Try again!");
+      }
+    }
+  </script>
+</body>
+</html>
