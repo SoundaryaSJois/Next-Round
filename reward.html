@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Dancing+Script:wght@600&display=swap');
+
+        /* Fixed Background */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff4d6d, #ffafbd);
+            font-family: 'Luckiest Guy', cursive;
+            text-align: center;
+            overflow-x: hidden;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -10vh;
+            left: 50%;
+            color: #ff3366;
+            font-size: 2rem;
+            opacity: 0.8;
+            animation: float 8s linear infinite;
+            pointer-events: none; /* Prevent interaction */
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-150vh) scale(1.5); opacity: 0; }
+        }
+
+        /* Main Text */
+        .main-text {
+            font-size: 7rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0px 0px 25px rgba(255, 51, 102, 0.9);
+            margin: 100px auto;
+            opacity: 1;
+            transform: scale(1);
+            animation: popIn 1.5s ease-out forwards;
+            transition: opacity 0.5s ease-out;
+            text-align: center;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            60% { opacity: 1; transform: scale(1.1); }
+            100% { transform: scale(0.9); }
+        }
+
+        /* Content Container */
+        .content {
+            height: 20vh;
+            padding-top: 50px;
+        }
+
+        /* Messages */
+        .message {
+            font-size: 2rem;
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            padding: 20px;
+            line-height: 1.8;
+            max-width: 80%;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideIn 1.2s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Fade Effect */
+        .message.fade-out {
+            opacity: 0.3;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Hearts -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+
+            // Randomize heart position & size
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 1.5 + 1 + "rem";
+            heart.style.animationDuration = Math.random() * 3 + 6 + "s"; // Speed variation
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000); // Ensure it lasts long enough to reach the top
+        }
+
+        // Generate floating hearts every 400ms
+        setInterval(createHeart, 400);
+    </script>
+
+    <!-- Valentine's Message -->
+    <div class="main-text" id="valentineMessage">
+        Happy Valentine's Day to my beautiful baby boy
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <div class="message">You deserve every good thing life has in store for you, including me :p.</div>
+        <div class="message">I love you very much, and you know it.</div>
+        <div class="message">I can't wait to grow older with you and give you everything you deserve.</div>
+        <div class="message">Even if I can't gift you expensive things, I will never hold back from making you feel as special as you already are.</div>
+        <div class="message">Thank you for being a part of my life, Adu.</div>
+        <div class="message">Your Sounnu loves you.</div>
+    </div>
+
+    <!-- Scroll Animation Trigger -->
+    <script>
+        let lastScrollTop = 0;
+
+        document.addEventListener("scroll", function() {
+            const messages = document.querySelectorAll(".message");
+            const mainText = document.getElementById("valentineMessage");
+            let currentScroll = window.scrollY;
+
+            // Fade main text but never fully disappear
+            if (currentScroll > 50) {
+                mainText.classList.add("fade");
+            } else {
+                mainText.classList.remove("fade");
+            }
+
+            // Show messages when scrolling down
+            messages.forEach((message, index) => {
+                const rect = message.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    setTimeout(() => {
+                        message.classList.add("show");
+                    }, index * 300);
+                }
+            });
+
+            // Fade out messages when scrolling back up
+            messages.forEach((message, index) => {
+                if (currentScroll < lastScrollTop) {
+                    setTimeout(() => {
+                        message.classList.add("fade-out");
+                    }, index * 200);
+                } else {
+                    message.classList.remove("fade-out");
+                }
+            });
+
+            lastScrollTop = currentScroll;
+        });
+    </script>
+
+</body>
+</html>
