@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Valentine Message</title>
+    <title>Valentine Message</title>
     <style>
         body {
             background-color: #ffe6e6;
@@ -30,6 +30,18 @@
             font-weight: bold;
             padding: 10px;
         }
+        .hidden-link {
+    color: #ffccd5; /* Same as background color */
+    background-color: #ffccd5;
+    user-select: text;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.hidden-link::selection {
+    color: black; /* Change color when highlighted */
+    background-color: yellow;
+}
     </style>
     <script>
         function checkPassword() {
@@ -57,7 +69,7 @@ a hidden surprise will make it's way."<br></p>
     <div class="message-box">
         <p class="hidden-text">CONGRATULATIONS YOU FOUND THE NEXT CLUE<br>
         One last clue, waits for you<br>
-        <a class="message-box" href="https://soundaryasjois.github.io/Next-Round/page3.html">Click here.</a></p>
+        <span class="hidden-link" href="https://soundaryasjois.github.io/Next-Round/page3.html">Click here.</span></p>
     </div>
 </body>
 </html>
